@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+    <div id="app_1">
+
+      <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">
+      <button v-on:click="addTodo">+</button>
+      <li v-for="todo in todos1" v-bind:key="todo.id">
+        <span>{{ todo.content }}</span>
+        <button v-on:click="removeTodo(todo.id)">x</button>
+      </li>
+    </div>
+
+    <div id="app_2">
+      <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">
+      <button v-on:click="addTodo">+</button>
+      <li v-for="todo in todos2" v-bind:key="todo.id">
+        <span>{{ todo.content }}</span>
+        <button v-on:click="removeTodo(todo.id)">x</button>
+      </li>
+    </div>
+
+    <div id="app_3">
+    <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">
+    <button v-on:click="addTodo">+</button>
+    <li v-for="todo in todos3" v-bind:key="todo.id">
+      <span>{{ todo.content }}</span>
+      <button v-on:click="removeTodo(todo.id)">x</button>
+    </li>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app_1 = new Vue({
+      el: '#app_1',
+      data: {
+        todos1: [],
+        newTodo1: '',
+      },
+      methods: {
+        addTodo: function(e) {
+          if (this.newTodo.length != 0) {
+            this.todos.push({
+              id: Date.now(),
+              content: this.newTodo,
+              completed: false,
+            })
+            this.newTodo = ''
+          }
+        },
+        removeTodo: function(todoID) {
+          this.todos = this.todos.filter(todo => {
+            return todo.id !== todoID
+          })
+        }
+      }
+    })
+    const app_2 = new Vue({
+      el: '#app_2',
+      data: {
+        todos: [],
+        newTodo: '',
+      },
+      methods: {
+        addTodo: function(e) {
+          if (this.newTodo.length != 0) {
+            this.todos.push({
+              id: Date.now(),
+              content: this.newTodo,
+              completed: false,
+            })
+            this.newTodo = ''
+          }
+        },
+        removeTodo: function(todoID) {
+          this.todos = this.todos.filter(todo => {
+            return todo.id !== todoID
+          })
+        }
+      }
+    })
+    const app_3 = new Vue({
+      el: '#app_3',
+      data: {
+        todos: [],
+        newTodo: '',
+      },
+      methods: {
+        addTodo: function(e) {
+          if (this.newTodo.length != 0) {
+            this.todos.push({
+              id: Date.now(),
+              content: this.newTodo,
+              completed: false,
+            })
+            this.newTodo = ''
+          }
+        },
+        removeTodo: function(todoID) {
+          this.todos = this.todos.filter(todo => {
+            return todo.id !== todoID
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
